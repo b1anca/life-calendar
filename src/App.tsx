@@ -1,33 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+const TOTAL_WEEKS = 90 * 52; // 90 years × 52 weeks (1 year ~= 52 weeks)
+
+interface WeekSquareProps {
+  isLived: boolean;
+}
+
+const WeekSquare: React.FC<WeekSquareProps> = ({ isLived }) => {
+  return (
+    <div
+      className={`week-square ${isLived ? 'lived' : ''}`}
+      title={isLived ? 'Lived' : 'Future'}
+    ></div>
+  );
+};
+
+const LifeCalendar: React.FC<{ currentAge: number }> = ({ currentAge }) => {
+  const livedWeeks = currentAge * 52;
+
+  return (
+    <div className="calendar-grid">
+      {Array.from({ length: TOTAL_WEEKS }).map((_, index) => (
+        <WeekSquare key={index} isLived={index < livedWeeks} />
+      ))}
+    </div>
+  );
+};
+
 function App() {
-  const [count, setCount] = useState(0)
+  const currentAge = 30;
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Life Calendar</h1>
+      <LifeCalendar currentAge={currentAge} />
     </>
   )
 }
