@@ -50,7 +50,6 @@ function App() {
     }
   };
 
-  console.log('debug app')
   return (
     <>
       <h1>Life Calendar</h1>

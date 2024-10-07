@@ -20,14 +20,13 @@
 .week-square {
   width: 100%;
   padding-top: 0;
-  border: 1px solid #ddd;
+  border: 1px solid #d6d6d6;
   aspect-ratio: 1 / 1;
 }
 
 .week-square.lived {
-  background-color: #eee;
+  background-color: #d6d6d6;
 }
-
 
 h1 {
   margin-bottom: 20px;
