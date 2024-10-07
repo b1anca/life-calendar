@@ -4,6 +4,16 @@
   text-align: center;
 }
 
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mr-2 {
+  margin-right: 6px;
+}
+
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(10px, 1fr));
